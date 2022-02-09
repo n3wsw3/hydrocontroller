@@ -20,18 +20,20 @@ void loop() {
   delay(5000);
 }
 
-int measure_waterLevel() {
-  return millis() / 1000;
+
+
+double measure_waterLevel() {
+  return 5 * sin(((float)millis()) / 10000) + 25;
 }
 
-int measure_temperature() {
-  return 0;
+double measure_temperature() {
+  return 4 * sin(((float)millis()) / 5000) + 20;
 }
 
-int measure_EC() {
-  return 0;
+double measure_EC() {
+  return 2 * sin(((float)millis()) / 1000) + 2;
 }
 
-int measure_pH() {
-  return 0;
+double measure_pH() {
+  return 1.5 * sin(((float)millis()) / 2000) + 5.5;
 }
