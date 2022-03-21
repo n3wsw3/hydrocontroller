@@ -18,6 +18,9 @@ Handler handlers[] = {{"Measure EC", &measure_EC, 40U}, {"Update Sensor Data", &
 
 void setup()
 {
+  // initialize serial communication at 9600 bits per second:
+  Serial.begin(9600); // 8 data bits, no parity, 1 stop bit
+
   // Initialize pump pins;
   for (int pin : pumps)
   {
@@ -27,15 +30,12 @@ void setup()
   }
 
   pinMode(ecPin, INPUT);
-
-  // initialize serial communication at 9600 bits per second:
-  Serial.begin(9600, SERIAL_8N1); // 8 data bits, no parity, 1 stop bit
 }
 
 // the loop routine runs over and over again forever:
 void loop()
 {
-  for (auto handler : handlers)
+  for (auto& handler : handlers)
   {
     if (handler.should_run())
     {
@@ -74,7 +74,7 @@ void measure_waterLevel()
 
 void measure_temperature()
 {
-  temperature = 4 * sin(((float)millis()) / 5000) + 20;
+  // temperature = 4 * sin(((float)millis()) / 5000) + 20;
 }
 
 #define EC_BUFFER_COUNT 30

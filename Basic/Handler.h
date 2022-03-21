@@ -16,11 +16,11 @@ struct Handler
 
   bool should_run()
   {
-    return last_run + time >= millis();
+    return last_run + time <= millis();
   }
 
   void run() {
-    last_run = millis();
+    last_run += time;
     handler();
   }
 };
