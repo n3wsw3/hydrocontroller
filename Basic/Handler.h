@@ -20,7 +20,7 @@ struct Handler
   }
 
   void run() {
-    last_run += time;
+    last_run = millis();
     handler();
   }
 };
